@@ -104,9 +104,9 @@ nexusProxy:
   targetPort: 8080
   # labels: {}
   env:
-    nexusDockerHost:
-    nexusHttpHost:
-    enforceHttps: false
+    nexusDockerHost: nexuscontainer.54.73.79.60.sslip.io
+    nexusHttpHost: nexus.54.73.79.60.sslip.io
+    enforceHttps: true
     cloudIamAuthEnabled: false
 ## If cloudIamAuthEnabled is set to true uncomment the variables below and remove this line
   #   clientId: ""
@@ -177,12 +177,12 @@ nexusBackup:
     # pdName: nexus-backup-disk
     # fsType: ext4
   resources: {}
-    # requests:
-      # cpu: 100m
-      # memory: 256Mi
-    # limits:
-      # cpu: 200m
-      # memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 1200Mi
+    limits:
+      cpu: 200m
+      memory: 1200Mi
   rcloneConfig:
     rclone.conf: |
       [AWS]
@@ -221,10 +221,12 @@ rbac:
   annotations: {}
 
 ingress:
-  enabled: false
+  enabled: true
   path: /
   labels: {}
-  annotations: {}
+  annotations:
+    kubernetes.io/ingress.class: eks-tyc-ingress-nginx
+    cert-manager.io/cluster-issuer: eks-tyc-cert-manager
   # # NOTE: Can't use 'false' due to https://github.com/jetstack/kube-lego/issues/173.
   # kubernetes.io/ingress.allow-http: true
   # kubernetes.io/ingress.class: gce
