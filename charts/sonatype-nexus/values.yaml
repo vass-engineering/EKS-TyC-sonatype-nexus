@@ -227,8 +227,6 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: eks-tyc-ingress-nginx
     cert-manager.io/cluster-issuer: letsencrypt-eks
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    ingress.kubernetes.io/ssl-redirect: "true"
   # # NOTE: Can't use 'false' due to https://github.com/jetstack/kube-lego/issues/173.
   # kubernetes.io/ingress.allow-http: true
   # kubernetes.io/ingress.class: gce
@@ -257,7 +255,7 @@ ingressDocker:
   # kubernetes.io/ingress.global-static-ip-name: ""
   # kubernetes.io/tls-acme: true
   tls:
-    enabled: true
+    enabled: false
     secretName: nexus-tls
   # Specify custom rules in addition to or instead of the nexus-proxy rules
   rules:
