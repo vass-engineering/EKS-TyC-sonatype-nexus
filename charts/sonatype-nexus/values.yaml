@@ -226,7 +226,7 @@ ingress:
   labels: {}
   annotations:
     kubernetes.io/ingress.class: eks-tyc-ingress-nginx
-    cert-manager.io/cluster-issuer: letsencrypt-eks
+    cert-manager.io/cluster-issuer: cert-manager-infraapps
 
 
   # # NOTE: Can't use 'false' due to https://github.com/jetstack/kube-lego/issues/173.
