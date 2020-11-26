@@ -275,6 +275,25 @@ tolerations:
   value: "true"
   effect: "PreferNoSchedule"
 
+affinity:
+  nodeAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 1
+      preference:
+        matchExpressions:
+        - key: lifecycle
+          operator: In
+          values:
+          - EC2Spot
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: intent
+          operator: In
+          values:
+          - apps
+          - control-apps
+          
 # # Enable configmap and add data in configmap
 config:
   enabled: false
