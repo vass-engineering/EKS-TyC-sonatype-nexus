@@ -269,7 +269,11 @@ ingressDocker:
   #         servicePort: 80
 
 
-tolerations: []
+tolerations:
+- key: "spotInstance"
+  operator: "Equal"
+  value: "true"
+  effect: "PreferNoSchedule"
 
 # # Enable configmap and add data in configmap
 config:
