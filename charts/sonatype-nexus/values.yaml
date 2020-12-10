@@ -117,13 +117,13 @@ nexusProxy:
   # secrets:
   #   keystore: ""
   #   password: ""
-  resources: {}
-    # requests:
-      # cpu: 100m
-      # memory: 256Mi
-    # limits:
-      # cpu: 200m
-      # memory: 512Mi
+  resources: 
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 200m
+      memory: 512Mi
 
 nexusProxyRoute:
   enabled: false
@@ -293,7 +293,7 @@ affinity:
           values:
           - apps
           - control-apps
-          
+
 # # Enable configmap and add data in configmap
 config:
   enabled: false
